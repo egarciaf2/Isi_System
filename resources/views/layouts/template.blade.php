@@ -75,7 +75,7 @@
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<form method="POST" action="{{ route('logout') }}">
 						@csrf
-						<button type="submit" class="dropdown-item">Cerrar Sesion</button>
+						<button type="submit" class="dropdown-item">Salir</button>
 					</form>
 				</div>
 			</div>
