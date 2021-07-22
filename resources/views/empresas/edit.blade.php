@@ -10,7 +10,7 @@
             <div class="card shadow card-success card-outline">
               <div class="card-header">
               	<div class="d-flex justify-content-between">
-              		<h3 class="card-title mt-2">Nueva Empresa</h3>
+              		<h3 class="card-title mt-2">Editar Empresa</h3>
               	</div>
                 
               </div>
@@ -30,8 +30,9 @@
                        </div>
                     @endif
 
-              	<form method="POST" action="{{ route('empresa.store') }}" enctype="multipart/form-data">
+              	<form method="POST" action="{{ route('empresa.update', $empresa) }}" enctype="multipart/form-data">
                   @csrf
+                  @method('PUT')
                   
               		<div class="row">
 
@@ -44,7 +45,7 @@
               						<label class="custom-file-label" for="imgLogo" data-browse="Buscar">Buscar Logo</label>
               					</div>
               				</div>
-              				<img src="{{ asset(Config('constantes.img_default')) }}" id="vwNewImg" class="img-fluid" alt="" style="max-height: 400px;">
+              				<img src="{{ ($empresa->logoTipo)?  '/showImg?ruta='.$empresa->logoTipo : asset(Config('constantes.img_default')) }}" id="vwNewImg" class="img-fluid" alt="" style="max-height: 400px;">
               			</div>
 
               			{{-- Info --}}
@@ -53,19 +54,19 @@
               					<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
               						<div class="form-group">
               							<label for="txtNombre">Nombre de Empresa</label>
-              							<input type="text" class="form-control" id="txtNombre" name="txtNombre" value="{{ old('txtNombre') }}">
+              							<input type="text" class="form-control" id="txtNombre" name="txtNombre" value="{{ old('txtNombre', ($empresa->nombre)? $empresa->nombre : '') }}">
               						</div>
               					</div>
               					<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
               						<div class="form-group">
               							<label for="txtEmail">Correo</label>
-              							<input type="email" class="form-control" id="txtEmail" name="txtEmail" value="{{ old('txtEmail') }}">
+              							<input type="email" class="form-control" id="txtEmail" name="txtEmail" value="{{ old('txtEmail', ($empresa->email)? $empresa->email : '') }}">
               						</div>
               					</div>
               					<div class="col-12">
               						<div class="form-group">
               							<label for="txtUrl">Url Web</label>
-              							<input type="text" class="form-control" id="txtUrl" name="txtUrl" value="{{ old('txtUrl') }}">
+              							<input type="text" class="form-control" id="txtUrl" name="txtUrl" value="{{ old('txtUrl', ($empresa->url)? $empresa->url : '') }}">
               						</div>
               					</div>
               				</div>	
@@ -75,7 +76,7 @@
 
               		<div class="d-flex justify-content-between mt-4">
               			<a href="{{ route('empresa.index') }}" class="btn btn-danger">Cancelar</a>
-                    <button type="submit" class="btn btn-info">Registrar</button>
+                    <button type="submit" class="btn btn-info">Actualizar Empresa</button>
               		</div>
               	</form>
               </div>

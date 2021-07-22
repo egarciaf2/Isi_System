@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EmpresaRequest;
 use App\Models\Empresa;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class EmpresaController extends FuncionesController
@@ -94,7 +95,7 @@ class EmpresaController extends FuncionesController
      */
     public function edit(Empresa $empresa)
     {
-        //
+        return view('empresas.edit', ['empresa' => $empresa]);
     }
 
     /**
@@ -104,9 +105,62 @@ class EmpresaController extends FuncionesController
      * @param  \App\Models\Empresa  $empresa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Empresa $empresa)
+    public function update(EmpresaRequest $request, Empresa $empresa)
     {
-        //
+
+        //Se toma el logo antiguo
+        $img = $empresa->logoTipo;
+
+
+        //Si existe un nuevo logo, entonces se registra
+        if ($request->hasFile('imgLogo')) {
+            $imgNew = $this->SaveArchivoStorage($request->imgLogo, rand() . time(), '/documentos/logos/');
+
+            #valida si ocurrio un error
+            if(!$imgNew['status']){
+                return $this->messageRedirect('empresa.edit', false, 'Error al guardar nuevo Logo');
+            }
+
+            $img = $imgNew['message'];
+
+        }
+
+
+        try {
+
+            #Actualiza la empresa
+            $updateEmpresa = Empresa::find($empresa->id);
+            $updateEmpresa->nombre = $request->txtNombre;
+            $updateEmpresa->email = $request->txtEmail;
+            $updateEmpresa->logoTipo  = $img;
+            $updateEmpresa->url = $request->txtUrl;
+
+            $updateEmpresa->save();
+
+
+
+            //Si llega a este punto es porque todo salio bien y elimina el logo antiguo
+            if ($request->hasFile('imgLogo')){
+                $this->deleteFile($empresa->logoTipo);
+            }
+
+
+            return $this->messageRedirect('empresa.index', true, 'La informacion fue actualizada Exitosamente');
+
+        }catch (\Exception $ex) {
+            //Si ocurre un error al guardar data, elimina la foto que fue guardada previamente
+            ($request->hasFile('imgLogo'))? $this->deleteFile($img) : '';
+            return $this->messageRedirect('empresa.edit', false, 'Se presentó un error al tratar de guardar los datos');
+
+        } catch (\Throwable $ex) {
+            ($request->hasFile('imgLogo'))? $this->deleteFile($img) : '';
+            return $this->messageRedirect('empresa.edit', false, 'Se presentó un error al tratar de guardar los datos');
+
+        }catch (QueryException $ex)
+        {
+            ($request->hasFile('imgLogo'))? $this->deleteFile($img) : '';
+            return $this->messageRedirect('empresa.edit', false, 'Se presentó un error al tratar de guardar los datos');
+        }
     }
 
     /**

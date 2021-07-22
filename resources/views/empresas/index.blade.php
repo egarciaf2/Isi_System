@@ -40,10 +40,12 @@
 							  					<td class="align-middle">{{ ($empresa->url)? $empresa->url : '' }}</td>
 							  					<td class="align-middle text-center">
 							  						<div class='btn-group'>
-							  							<button class="btn btn-warning btn-sm btnEditarCliente text-white" title="Editar Empresa">
-							  								<i class="fas fa-pencil-alt"></i>
-							  							</button>
-							  							<a href="{{ route('empresa.edit', $empresa) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+							  							<a href="{{ route('empresa.edit', $empresa) }}" class="btn btn-warning btn-sm text-white">
+								  							<i class="fas fa-pencil-alt"></i>
+								  						</a>
+							  							<a href="{{ route('empresa.destroy', $empresa) }}" class="btn btn-danger btn-sm">
+							  									<i class="fas fa-trash-alt"></i>
+							  								</a>
 							  						</div>
 							  					</td>
 							  				</tr>
