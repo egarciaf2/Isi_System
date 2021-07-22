@@ -14,18 +14,17 @@
     <!--=========================
     =            CSS            =
     ==========================-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"> --}}
 
      <!-- Font Awesome -->
-	<link rel="stylesheet" href="/vendor/fontawesome-free/css/all.min.css">
+	<link rel="stylesheet" href="{{ asset('/vendor/fontawesome-free/css/all.min.css') }}">
 	<!-- Theme style -->
-	<link rel="stylesheet" href="vendor/adminlte/css/adminlte.min.css">
+	<link rel="stylesheet" href="{{ asset('/vendor/adminlte/css/adminlte.min.css') }}">
 	<!-- Google Font: Source Sans Pro -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 	<!-- DataTables -->
-	<link rel="stylesheet" href="/vendor/datatables/css/dataTables.bootstrap4.min.css">
-	<link rel="stylesheet" href="/vendor/datatables/css/responsive.bootstrap4.min.css">
+	<link rel="stylesheet" href="{{ asset('/vendor/datatables/css/dataTables.bootstrap4.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('/vendor/datatables/css/responsive.bootstrap4.min.css') }}">
 
 
     {{-- Datatables --}}
@@ -37,19 +36,19 @@
     =            JS            =
     =========================-->
     <!-- jQuery -->
-	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="{{ asset('/vendor/jquery/jquery.min.js') }}"></script>
 
 	<!-- Bootstrap 4 -->
-	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="{{ asset('/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 	<!-- DataTables -->
-	<script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
-	<script src="/vendor/datatables/js/dataTables.responsive.min.js"></script>
-	<script src="/vendor/datatables/js/responsive.bootstrap4.min.js"></script>
+	<script src="{{ asset('/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('/vendor/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
+	<script src="{{ asset('/vendor/datatables/js/dataTables.responsive.min.js') }}"></script>
+	<script src="{{ asset('/vendor/datatables/js/responsive.bootstrap4.min.js') }}"></script>
 
 	<!-- AdminLTE App -->
-	<script src="/vendor/adminlte/js/adminlte.min.js"></script>
+	<script src="{{ asset('/vendor/adminlte/js/adminlte.min.js') }}"></script>
 	 
 </head>
 <body class="hold-transition sidebar-mini sidebar-collapse">
@@ -82,7 +81,7 @@
 	<!-- Main Sidebar Container -->
 	<aside class="main-sidebar sidebar-dark-primary elevation-4">
 	  	<!-- Brand Logo -->
-	  	<a href="../../index3.html" class="brand-link">
+	  	<a href="{{ url('/') }}" class="brand-link">
 	  		<img src="/img/logo4.png"
 	  		alt="AdminLTE Logo"
 	  		class="brand-image img-circle elevation-3"
@@ -96,7 +95,7 @@
 	  		<nav class="mt-2">
 	  			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 	  				<li class="nav-item">
-	  					<a href="{{ route('home') }}" class="nav-link">
+	  					<a href="{{ route('empresa.index') }}" class="nav-link">
 	  						{{-- <i class="nav-icon fas fa-th"></i> --}}
 	  						<i class="nav-icon fas fa-building"></i>
 	  						<p>
@@ -105,7 +104,7 @@
 	  					</a>
 	  				</li>
 	  				<li class="nav-item">
-	  					<a href="{{ route('empleados') }}" class="nav-link">
+	  					<a href="{{ url('/') }}" class="nav-link">
 	  						{{-- <i class="nav-icon fas fa-th"></i> --}}
 	  						<i class="nav-icon fas fa-user-tie"></i>
 	  						<p>

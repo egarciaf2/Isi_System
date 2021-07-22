@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\EmpresaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,18 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('empresas.index');
-})->middleware(['auth'])->name('home');
+Route::any('/', [EmpresaController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('home');
 
-Route::get('/empleados', function () {
-    return view('empleados.index');
-})->middleware(['auth'])->name('empleados');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
+Route::resource('/empresa', EmpresaController::class)->names('empresa')->middleware(['auth']);
+//Route::resource('/empresa', EmpresaController::class)->names('projects')->parameters(['portafolio' => 'project']);
 
 
 require __DIR__.'/auth.php';
