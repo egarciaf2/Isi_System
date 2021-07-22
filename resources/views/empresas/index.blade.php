@@ -44,10 +44,10 @@
 								  							<i class="fas fa-pencil-alt"></i>
 								  						</a>
 
-								  						    <form method="POST" action="{{ route('empresa.destroy', $empresa) }}" id="frmDeleteEmpresa">
+								  						    <form method="POST" action="{{ route('empresa.destroy', $empresa) }}" id="frmDeleteEmpresa{{$empresa->id}}">
 															    	@csrf
 															    	@method('DELETE')
-															    	<button type="button" class="btn btn-danger btn-sm" onclick="deleteEmpresa()">
+															    	<button type="button" class="btn btn-danger btn-sm" onclick="deleteEmpresa('frmDeleteEmpresa{{$empresa->id}}')">
 															    		<i class="fas fa-trash-alt"></i>
 															    	</button>
 

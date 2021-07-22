@@ -29,7 +29,7 @@ $(document).ready( function () {
 } );
 
 // eliminar Empresa
-function deleteEmpresa(){
+function deleteEmpresa(idForm){
     Swal.fire({
         title: '¿Confirma que desea eliminar la empresa?',
         text: "Esta accion no se puede deshacer!",
@@ -41,7 +41,7 @@ function deleteEmpresa(){
     }).then((result) => {
 
         if (result.isConfirmed) {
-            let formulario = document.getElementById('frmDeleteEmpresa');
+            let formulario = document.getElementById(idForm);
             formulario.submit();
         }
 
