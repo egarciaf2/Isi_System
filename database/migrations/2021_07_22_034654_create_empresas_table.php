@@ -19,6 +19,7 @@ class CreateEmpresasTable extends Migration
             $table->string('email')->unique();
             $table->string('logoTipo');
             $table->string('url');
+            $table->boolean('estado')->default(1);
             $table->timestamps();
         });
     }

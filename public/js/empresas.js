@@ -28,6 +28,29 @@ $(document).ready( function () {
     });
 } );
 
+// eliminar Empresa
+function deleteEmpresa(){
+    Swal.fire({
+        title: '¿Confirma que desea eliminar la empresa?',
+        text: "Esta accion no se puede deshacer!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#d75',
+        confirmButtonText: 'Si, Eliminar!'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            let formulario = document.getElementById('frmDeleteEmpresa');
+            formulario.submit();
+        }
+
+        })
+}
+
+
+
+// Mostrar previzualizacion de logo
 $(".uploadLogo").change(function(){
 
     let imagen = this.files[0];

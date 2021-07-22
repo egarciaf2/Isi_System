@@ -16,7 +16,7 @@ class EmpresaController extends FuncionesController
      */
     public function index()
     {
-        $empresas = Empresa::get();
+        $empresas = Empresa::where('estado', '=', 1)->get();
 
         return view("empresas.index", get_defined_vars());
     }
@@ -171,6 +171,20 @@ class EmpresaController extends FuncionesController
      */
     public function destroy(Empresa $empresa)
     {
-        //
+        //Solo utilizare eliminacion logica, para no perjudicar al listado de empleados al eliminar la informacion
+        try {
+
+        #Actualiza la empresa
+        $updateEmpresa = Empresa::find($empresa->id);
+        $updateEmpresa->estado = 0;
+        $updateEmpresa->save();
+        
+        return $this->messageRedirect('empresa.index', true, 'La empresa fue eliminada exitosamente');
+
+    }catch (\Exception $ex) {
+        return $this->messageRedirect('empresa.index', false, 'Se presentó un error al tratar de Eliminar la empresa');
+    }
+
+
     }
 }

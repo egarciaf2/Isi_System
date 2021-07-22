@@ -43,8 +43,16 @@
 							  							<a href="{{ route('empresa.edit', $empresa) }}" class="btn btn-warning btn-sm text-white">
 								  							<i class="fas fa-pencil-alt"></i>
 								  						</a>
-							  							<a href="{{ route('empresa.destroy', $empresa) }}" class="btn btn-danger btn-sm">
-							  									<i class="fas fa-trash-alt"></i>
+
+								  						    <form method="POST" action="{{ route('empresa.destroy', $empresa) }}" id="frmDeleteEmpresa">
+															    	@csrf
+															    	@method('DELETE')
+															    	<button type="button" class="btn btn-danger btn-sm" onclick="deleteEmpresa()">
+															    		<i class="fas fa-trash-alt"></i>
+															    	</button>
+
+															    </form>
+							  									
 							  								</a>
 							  						</div>
 							  					</td>
@@ -62,6 +70,9 @@
         </div>
       </div>
     </section>
+
+    {{-- form utilizado para eliminar una empresa --}}
+
 
 
 @endsection

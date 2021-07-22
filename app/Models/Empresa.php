@@ -11,6 +11,6 @@ class Empresa extends Model
 
     protected $table='empresas';
     protected $primaryKey = 'id';
-    protected $fillable = array('nombre', 'email', 'logoTipo', 'url', 'created_at', 'updated_at');
+    protected $fillable = array('nombre', 'email', 'logoTipo', 'url', 'estado', 'created_at', 'updated_at');
     public $incrementing = true;
 }
