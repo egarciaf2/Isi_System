@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Faker\Core\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -25,12 +26,11 @@ class FuncionesController extends Controller
 
         try {
 
-            $extensiones = ['jpg', 'png', 'jpeg'];
 
             $file = $archivo;
             $path = $file->getClientOriginalName();
 
-            $valida = $this->ValidaExtension($extensiones, $path);
+            $valida = $this->ValidaExtension($path);
 
             if (isset($valida['status']) && $valida['status'] == true) {
 
@@ -55,8 +55,10 @@ class FuncionesController extends Controller
      * @param $path
      * @return array
      */
-    public function ValidaExtension($extensiones, $path)
+    public function ValidaExtension($path)
     {
+        $extensiones = ['jpg', 'png', 'jpeg'];
+
         $item = explode('.', $path);
         $ext = array_pop($item);
         $flag = false;
@@ -115,14 +117,10 @@ class FuncionesController extends Controller
      */
     private function showImgDefault()
     {
-        $ruta = Config('constantes.no_img');
+        $ruta = (Config('constantes.no_img'));
 
-        $tipo = Storage::mimeType($ruta);
 
-        $archivo = Response::make(Storage::get($ruta), 200, [
-            'Content-Type' => $tipo,
-            'Content-Disposition' => 'inline; filename="' . $ruta . '"'
-        ]);
+        $archivo = response()->file(public_path($ruta));
 
         return $archivo;
     }

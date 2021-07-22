@@ -17,7 +17,8 @@ class EmpresaController extends FuncionesController
     {
         $empresas = Empresa::get();
 
-        return view("empresas.index");
+        #dd($empresas);
+        return view("empresas.index", get_defined_vars());
     }
 
     /**

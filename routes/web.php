@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\EmpresaController;
+use \App\Http\Controllers\FuncionesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,8 @@ use \App\Http\Controllers\EmpresaController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/showImg', [FuncionesController::class, 'showImg']);
 
 Route::any('/', [EmpresaController::class, 'index'])
     ->middleware(['auth'])

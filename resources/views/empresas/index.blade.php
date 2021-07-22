@@ -18,7 +18,6 @@
               </div>
               <div class="card-body">
 						  	<div class=""> 
-						  		{{-- table table-bordered table-striped dataTable dtr-inline collapsed --}}
 						  		<table id="tblEmpresas" class="table table-striped table-hover dtr-inline dt-responsive">
 						  			<caption>Lista de empresas</caption>
 						  			<thead class="thead-dark|thead-light">
@@ -31,45 +30,28 @@
 						  				</tr>
 						  			</thead>
 						  			<tbody>
-
-						  				<tr>
-						  					<th>
-						  						<img class="img-thumbnail align-middle" width="60" height="60" src="img/logo.png" alt="">
-						  					</th>
-						  					<td class="align-middle">ISI</td>
-						  					<td class="align-middle">isi@isisolutions.com</td>
-						  					<td class="align-middle">isisolutions.com</td>
-						  					<td class="align-middle text-center">
-						  						<div class='btn-group'>
-						  							<button class="btn btn-warning btn-sm btnEditarCliente text-white" title="Editar Empresa">
-						  								<i class="fas fa-pencil-alt"></i>
-						  							</button>
-						  							<button class="btn btn-danger btn-sm btnEliminarCliente">
-						  								<i class="fas fa-trash-alt"></i>
-						  							</button>
-						  						</div>
-						  					</td>
-						  				</tr>
-
-						  				<tr>
-						  					<th>
-						  						<img class="img-thumbnail align-middle" width="60" height="60" src="img/apple.png" alt="">
-						  					</th>
-						  					<td class="align-middle">apple</td>
-						  					<td class="align-middle">apple@apple.com</td>
-						  					<td class="align-middle">apple.com</td>
-						  					<td class="align-middle  text-center">
-						  						<div class='btn-group'>
-						  							<button class="btn btn-warning btn-sm btnEditarCliente text-white">
-						  								<i class="fas fa-pencil-alt"></i>
-						  							</button>
-						  							<button class="btn btn-danger btn-sm btnEliminarCliente">
-						  								<i class="fas fa-trash-alt"></i>
-						  							</button>
-						  						</div>
-						  					</td>
-						  				</tr>
-
+						  				@foreach ($empresas as $empresa)
+						  					<tr>
+							  					<th>
+							  						<img class="img-thumbnail align-middle" width="60" height="60" src="{{ ($empresa->logoTipo)?  '/showImg?ruta='.$empresa->logoTipo : asset(Config('constantes.img_default')) }}" alt="">
+							  					</th>
+							  					<td class="align-middle">{{ ($empresa->nombre)? $empresa->nombre : '' }}</td>
+							  					<td class="align-middle">{{ ($empresa->email)? $empresa->email : '' }}</td>
+							  					<td class="align-middle">{{ ($empresa->url)? $empresa->url : '' }}</td>
+							  					<td class="align-middle text-center">
+							  						<div class='btn-group'>
+							  							<button class="btn btn-warning btn-sm btnEditarCliente text-white" title="Editar Empresa">
+							  								<i class="fas fa-pencil-alt"></i>
+							  							</button>
+							  							<a href="{{ route('empresa.edit', $empresa) }}"><i class="fas fa-trash-alt"></i></a>
+							  							<button class="btn btn-danger btn-sm btnEliminarCliente">
+							  								<i class="fas fa-trash-alt"></i>
+							  							</button>
+							  						</div>
+							  					</td>
+							  				</tr>
+						  				@endforeach
+						  				
 						  			</tbody>
 						  		</table>
 						  	</div>
