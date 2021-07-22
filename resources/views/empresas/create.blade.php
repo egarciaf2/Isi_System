@@ -35,7 +35,7 @@
               				<div class="row">
               					<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
               						<div class="form-group">
-              							<label for="txtNombre">Nombre</label>
+              							<label for="txtNombre">Nombre de Empresa</label>
               							<input type="text" class="form-control" id="txtNombre" name="txtNombre">
               						</div>
               					</div>
