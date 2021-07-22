@@ -19,7 +19,7 @@
               <div class="card-body">
 				  	<div class=""> 
 				  		{{-- table table-bordered table-striped dataTable dtr-inline collapsed --}}
-				  		<table id="tblEmpleados" class="table table-striped table-hover dtr-inline dt-responsive">
+				  		<table id="tblEmpleados" class="table table-striped table-hover dtr-inline dt-responsive" width="100%">
 				  			<caption>Lista de Empleados</caption>
 				  			<thead class="thead-dark|thead-light">
 				  				<tr>

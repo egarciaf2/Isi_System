@@ -18,14 +18,14 @@
               </div>
               <div class="card-body">
 						  	<div class=""> 
-						  		<table id="tblEmpresas" class="table table-striped table-hover dtr-inline dt-responsive">
+						  		<table id="tblEmpresas" class="table table-striped table-hover dtr-inline dt-responsive" width="100%">
 						  			<caption>Lista de empresas</caption>
 						  			<thead class="thead-dark|thead-light">
 						  				<tr>
 						  					<th>Logo</th>
-						  					<th>Nombre</th>
+						  					<th style="width: 200px;">Nombre</th>
 						  					<th>Correo</th>
-						  					<th>Web</th>
+						  					<th style="width: 200px;">Web</th>
 						  					<th class="text-center">Acciones</th>
 						  				</tr>
 						  			</thead>
@@ -43,10 +43,7 @@
 							  							<button class="btn btn-warning btn-sm btnEditarCliente text-white" title="Editar Empresa">
 							  								<i class="fas fa-pencil-alt"></i>
 							  							</button>
-							  							<a href="{{ route('empresa.edit', $empresa) }}"><i class="fas fa-trash-alt"></i></a>
-							  							<button class="btn btn-danger btn-sm btnEliminarCliente">
-							  								<i class="fas fa-trash-alt"></i>
-							  							</button>
+							  							<a href="{{ route('empresa.edit', $empresa) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
 							  						</div>
 							  					</td>
 							  				</tr>
