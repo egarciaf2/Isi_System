@@ -36,15 +36,15 @@
               		<div class="row">
 
               			{{-- Logo --}}
-              			<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+              			<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center mb-3">
               				<div class="form-group mb-3">
               					<label for="imgLogo">Logo Empresa</label>
               					<div class="custom-file">
-              						<input type="file" class="custom-file-input uploadPhoto" id="imgLogo" name="imgLogo" value="{{ old('imgLogo') }}">
+              						<input type="file" class="custom-file-input uploadLogo" id="imgLogo" name="imgLogo" value="{{ old('imgLogo') }}">
               						<label class="custom-file-label" for="imgLogo" data-browse="Buscar">Buscar Logo</label>
               					</div>
               				</div>
-              				<img src="{{ (old('imgLogo') != null)? old('imgLogo') : asset('img/logo-default.jpg') }}" id="vwNewImg" class="img-fluid" alt="" style="max-height: 400px;">
+              				<img src="{{ (old('imgLogo') != null)? old('imgLogo') : asset(Config('constantes.img_default')) }}" id="vwNewImg" class="img-fluid" alt="" style="max-height: 400px;">
               			</div>
 
               			{{-- Info --}}
@@ -89,3 +89,7 @@
 
 
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/empresas.js') }}"></script>
+@endpush

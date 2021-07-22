@@ -23,9 +23,9 @@
 						  			<thead class="thead-dark|thead-light">
 						  				<tr>
 						  					<th>Logo</th>
-						  					<th style="width: 200px;">Nombre</th>
+						  					<th>Nombre</th>
 						  					<th>Correo</th>
-						  					<th style="width: 200px;">Web</th>
+						  					<th>Web</th>
 						  					<th class="text-center">Acciones</th>
 						  				</tr>
 						  			</thead>
@@ -65,5 +65,5 @@
 @endsection
 
 @push('scripts')
-    <script src="js/empresas.js"></script>
+    <script src="{{ asset('js/empresas.js') }}"></script>
 @endpush

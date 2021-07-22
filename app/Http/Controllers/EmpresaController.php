@@ -17,7 +17,6 @@ class EmpresaController extends FuncionesController
     {
         $empresas = Empresa::get();
 
-        #dd($empresas);
         return view("empresas.index", get_defined_vars());
     }
 
@@ -53,7 +52,7 @@ class EmpresaController extends FuncionesController
             $empresa = new Empresa();
             $empresa->nombre = $request->txtNombre;
             $empresa->email = $request->txtEmail;
-            $empresa->logoTipo = $img['message'];
+            $empresa->logoTipo  = $img['message'];
             $empresa->url = $request->txtUrl;
             $empresa->save();
 
@@ -61,13 +60,17 @@ class EmpresaController extends FuncionesController
 
 
         }catch (\Exception $ex) {
+            //Si ocurre un error al guardar data, elimina la foto que fue guardada previamente
+            $this->deleteFile($img['message']);
             return $this->messageRedirect('empresa.create', false, 'Se presentó un error al tratar de guardar los datos');
 
         } catch (\Throwable $ex) {
+            $this->deleteFile($img['message']);
             return $this->messageRedirect('empresa.create', false, 'Se presentó un error al tratar de guardar los datos');
 
         }catch (QueryException $ex)
         {
+            $this->deleteFile($img['message']);
             return $this->messageRedirect('empresa.create', false, 'Se presentó un error al tratar de guardar los datos');
         }
     }

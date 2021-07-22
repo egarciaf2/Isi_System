@@ -117,7 +117,7 @@ class FuncionesController extends Controller
      */
     private function showImgDefault()
     {
-        $ruta = (Config('constantes.no_img'));
+        $ruta = Config('constantes.no_img');
 
 
         $archivo = response()->file(public_path($ruta));
