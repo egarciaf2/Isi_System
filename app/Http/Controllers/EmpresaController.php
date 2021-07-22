@@ -15,6 +15,8 @@ class EmpresaController extends FuncionesController
      */
     public function index()
     {
+        $empresas = Empresa::get();
+
         return view("empresas.index");
     }
 

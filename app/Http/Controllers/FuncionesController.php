@@ -77,7 +77,7 @@ class FuncionesController extends Controller
     /**
      * Muestra imagen almacenada en storage
      * @param $request
-     * @return file base64
+     * @return Response
      */
 
     public function showImg(Request $request)
@@ -108,7 +108,11 @@ class FuncionesController extends Controller
         }
     }
 
-
+    /**
+     * Retorna img por defecto
+     * @return Response
+     *
+     */
     private function showImgDefault()
     {
         $ruta = Config('constantes.no_img');
@@ -123,6 +127,14 @@ class FuncionesController extends Controller
         return $archivo;
     }
 
+    /**
+     * Retorna vista con variable de session
+     * @param $ruta
+     * @param $status
+     * @param $message
+     * @return view() and with()
+     *
+     */
     public function messageRedirect($ruta, $status, $message)
     {
         return redirect()->route($ruta)->with(['status' => $status, 'message' => $message]);
