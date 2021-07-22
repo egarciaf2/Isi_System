@@ -24,7 +24,7 @@ class EmpresaRequest extends FormRequest
     public function rules()
     {
         return [
-            'imgLogo' => 'required|image|max:5120', // peso maximo de 5 mb
+            'imgLogo' => 'image|max:5120', // peso maximo de 5 mb
             'txtNombre' => 'required',
             'txtEmail' => 'required|email',
             'txtUrl' => 'required'

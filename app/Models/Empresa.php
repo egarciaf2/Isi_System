@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Empresa extends Model
 {
     use HasFactory;
+
+    protected $table='empresas';
+    protected $primaryKey = 'id';
+    protected $fillable = array('nombre', 'email', 'logoTipo', 'url', 'created_at', 'updated_at');
+    public $incrementing = true;
 }

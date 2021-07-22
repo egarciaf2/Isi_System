@@ -6,7 +6,7 @@ use App\Http\Requests\EmpresaRequest;
 use App\Models\Empresa;
 use Illuminate\Http\Request;
 
-class EmpresaController extends Controller
+class EmpresaController extends FuncionesController
 {
     /**
      * Display a listing of the resource.
@@ -36,7 +36,37 @@ class EmpresaController extends Controller
      */
     public function store(EmpresaRequest $request)
     {
-        return $request->all();
+
+        $validated = $request->validate([
+            'imgLogo' => 'required',
+        ]);
+
+        $img = $this->SaveArchivoStorage($request->imgLogo, rand() . time(), '/documentos/logos/');
+
+        if(!$img['status']){
+            return $this->messageRedirect('empresa.create', false, 'Error al guardar Logo');
+        }
+        try {
+            $empresa = new Empresa();
+            $empresa->nombre = $request->txtNombre;
+            $empresa->email = $request->txtEmail;
+            $empresa->logoTipo = $img['message'];
+            $empresa->url = $request->txtUrl;
+            $empresa->save();
+
+            return $this->messageRedirect('empresa.index', true, 'Empresa registrada Exitosamente');
+
+
+        }catch (\Exception $ex) {
+            return $this->messageRedirect('empresa.create', false, 'Se presentó un error al tratar de guardar los datos');
+
+        } catch (\Throwable $ex) {
+            return $this->messageRedirect('empresa.create', false, 'Se presentó un error al tratar de guardar los datos');
+
+        }catch (QueryException $ex)
+        {
+            return $this->messageRedirect('empresa.create', false, 'Se presentó un error al tratar de guardar los datos');
+        }
     }
 
     /**

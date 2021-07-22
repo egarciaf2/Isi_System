@@ -49,6 +49,9 @@
 
 	<!-- AdminLTE App -->
 	<script src="{{ asset('/vendor/adminlte/js/adminlte.min.js') }}"></script>
+
+	{{-- SweetAlert --}}
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	 
 </head>
 <body class="hold-transition sidebar-mini sidebar-collapse">
