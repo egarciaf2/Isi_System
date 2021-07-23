@@ -177,16 +177,19 @@ class EmpresaController extends FuncionesController
         //Solo utilizare eliminacion logica, para no perjudicar al listado de empleados al eliminar la informacion
         try {
 
-            //$empresa->delete();
+
             DB::transaction(function () use($empresa) {
 
+
                 #Actualiza estado empresa
+                //$empresa->delete();
                 $deleteEmpresa = Empresa::find($empresa->id);
                 $deleteEmpresa->estado = 0;
                 $deleteEmpresa->save();
 
                 #Actualiza estado empleados
                 //Empleado::where('idEmpresa', $empresa->id)->delete();
+
                 Empleado::where('idEmpresa', $empresa->id)->update(['estado' => 0]);
 
             }, 2);
