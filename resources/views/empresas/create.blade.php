@@ -40,7 +40,7 @@
               				<div class="form-group mb-3">
               					<label for="imgLogo">Logo Empresa</label>
               					<div class="custom-file">
-              						<input type="file" class="custom-file-input uploadLogo" id="imgLogo" name="imgLogo">
+              						<input type="file" class="custom-file-input uploadLogo" id="imgLogo" name="imgLogo" accept="image/*">
               						<label class="custom-file-label" for="imgLogo" data-browse="Buscar">Buscar Logo</label>
               					</div>
               				</div>

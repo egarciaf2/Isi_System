@@ -63,7 +63,7 @@ $(".uploadLogo").change(function(){
 
         $("input[type='file']").val("");
         
-        showAlert('error', 'Incorrecto', 'La imagen debe estar en formato JPG o PNG!');
+        showAlert('error', 'Incorrecto', 'El logo debe estar en formato JPG o PNG!');
 
     /*=============================================
     VALIDAMOS EL TAMAÑO DE LA IMAGEN SEA JPG O PNG
@@ -72,7 +72,7 @@ $(".uploadLogo").change(function(){
 
         $("input[type='file']").val("");
 
-         showAlert('error', 'Incorrecto', 'La imagen no debe pesar más de 5MB!');
+         showAlert('error', 'Incorrecto', 'El logo no debe pesar más de 5MB!');
 
 
     }else{
@@ -82,9 +82,26 @@ $(".uploadLogo").change(function(){
 
         $(datosImagen).on("load", function(event){
 
-            var rutaImagen = event.target.result;
+            //Inicializa el objeto de imagen javascript
+            var image = new Image();
+            image.src = event.target.result;             
+            
+            //Valida el ancho y el alto de la imagen
+              image.onload = function () {
+                var height = this.height;
+                var width = this.width;
 
-            $("#vwNewImg").attr("src", rutaImagen);
+                if (height > 100 && width > 100) {
+                  $("#vwNewImg").attr("src", image.src);
+                }else{
+                    document.getElementById("imgLogo").value = "";
+                    $("#vwNewImg").attr("src", '/img/logo-default.jpg');
+                    showAlert('error', 'Incorrecto', 'El logo debe tener un tamaño minimo de 100 × 100');
+                }
+            }
+
+
+            
 
         })
 
