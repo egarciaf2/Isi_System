@@ -32,19 +32,19 @@
 			<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 				<div class="form-group">
 					<label for="txtNombre">Nombre de Empresa</label>
-					<input type="text" class="form-control" id="txtNombre" name="txtNombre" value="{{ old('txtNombre', (isset($empresa->nombre))? $empresa->nombre : '') }}">
+					<input type="text" class="form-control" id="txtNombre" name="txtNombre" placeholder="Ingresar Nombre " value="{{ old('txtNombre', (isset($empresa->nombre))? $empresa->nombre : '') }}">
 				</div>
 			</div>
 			<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 				<div class="form-group">
-					<label for="txtEmail">Correo</label>
-					<input type="email" class="form-control" id="txtEmail" name="txtEmail" value="{{ old('txtEmail', (isset($empresa->email))? $empresa->email : '') }}">
+					<label for="txtEmail">Correo Electronico</label>
+					<input type="email" class="form-control" id="txtEmail" name="txtEmail" placeholder="Ingresar Correo Electronico" value="{{ old('txtEmail', (isset($empresa->email))? $empresa->email : '') }}">
 				</div>
 			</div>
 			<div class="col-12">
 				<div class="form-group">
 					<label for="txtUrl">Url Web</label>
-					<input type="text" class="form-control" id="txtUrl" name="txtUrl" value="{{ old('txtUrl', (isset($empresa->url))? $empresa->url : '') }}">
+					<input type="text" class="form-control" id="txtUrl" name="txtUrl" placeholder="Ingresar Url de Web Empresa" value="{{ old('txtUrl', (isset($empresa->url))? $empresa->url : '') }}">
 				</div>
 			</div>
 		</div>	
