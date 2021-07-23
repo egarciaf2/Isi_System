@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EmpresaRequest;
+use App\Models\Empleado;
 use App\Models\Empresa;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -175,16 +177,25 @@ class EmpresaController extends FuncionesController
         //Solo utilizare eliminacion logica, para no perjudicar al listado de empleados al eliminar la informacion
         try {
 
-        #Actualiza la empresa
-        $updateEmpresa = Empresa::find($empresa->id);
-        $updateEmpresa->estado = 0;
-        $updateEmpresa->save();
+            //$empresa->delete();
+            DB::transaction(function () use($empresa) {
 
-        return $this->messageRedirect('empresa.index', true, 'La empresa fue eliminada exitosamente');
+                #Actualiza estado empresa
+                $deleteEmpresa = Empresa::find($empresa->id);
+                $deleteEmpresa->estado = 0;
+                $deleteEmpresa->save();
 
-    }catch (\Exception $ex) {
-        return $this->messageRedirect('empresa.index', false, 'Se presentó un error al tratar de Eliminar la empresa');
-    }
+                #Actualiza estado empleados
+                //Empleado::where('idEmpresa', $empresa->id)->delete();
+                Empleado::where('idEmpresa', $empresa->id)->update(['estado' => 0]);
+
+            }, 2);
+
+            return $this->messageRedirect('empresa.index', true, 'La empresa fue eliminada exitosamente');
+
+        }catch (\Exception $ex) {
+            return $this->messageRedirect('empresa.index', false, 'Se presentó un error al tratar de Eliminar la empresa');
+        }
 
 
     }

@@ -112,6 +112,7 @@ class EmpleadoController extends FuncionesController
             $empleado->email = $request->txtEmail;
             $empleado->telefono = $request->txtTelefono;
             $empleado->save();
+
             return $this->messageRedirect('empleado.index', true, 'Empleado Actualizado Exitosamente');
 
 
@@ -134,6 +135,22 @@ class EmpleadoController extends FuncionesController
      */
     public function destroy(Empleado $empleado)
     {
-        //
+        try {
+
+            //$empleado->delete();
+
+            #Actualiza estado empresa
+            $deleteEmpleado = Empleado::find($empleado->id);
+            $deleteEmpleado->estado = 0;
+            $deleteEmpleado->save();
+
+            return $this->messageRedirect('empleado.index', true, 'Empleado Eliminado Exitosamente');
+
+        } catch (QueryException $ex) {
+
+            return $this->messageRedirect('empleado.create', false, 'Se presentó un error al tratar de Eliminado los datos');
+
+        }
+
     }
 }

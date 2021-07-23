@@ -18,7 +18,7 @@
               </div>
               <div class="card-body">
 						  	<div class="">
-						  		<table id="tblEmpresas" class="table table-striped table-hover dtr-inline dt-responsive" width="100%">
+						  		<table id="tblEmpleados" class="table table-striped table-hover dtr-inline dt-responsive" width="100%">
 						  			<caption>Lista de Empleados</caption>
 						  			<thead class="thead-dark|thead-light">
 						  				<tr>
@@ -46,7 +46,7 @@
 										  						    <form method="POST" action="{{ route('empleado.destroy', $empleado) }}" id="frmDeleteempleado{{$empleado->id}}">
 																	    	@csrf
 																	    	@method('DELETE')
-																	    	<button type="button" class="btn btn-danger btn-sm" onclick="deleteempleado('frmDeleteempleado{{$empleado->id}}')">
+																	    	<button type="button" class="btn btn-danger btn-sm" onclick="deleteEmpleado('frmDeleteempleado{{$empleado->id}}')">
 																	    		<i class="fas fa-trash-alt"></i>
 																	    	</button>
 
@@ -78,5 +78,5 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/empresas.js') }}"></script>
+    <script src="{{ asset('js/empleados.js') }}"></script>
 @endpush

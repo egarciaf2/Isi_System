@@ -27,3 +27,24 @@ $(document).ready( function () {
         },
     });
 } );
+
+// eliminar Empleado
+function deleteEmpleado(idForm){
+    Swal.fire({
+        title: '¿Confirma que desea eliminar el Empleado?',
+        text: "Esta accion no se puede deshacer!",
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonColor: '#d75',
+        confirmButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar Empleado!',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            let formulario = document.getElementById(idForm);
+            formulario.submit();
+        }
+
+        })
+}
