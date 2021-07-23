@@ -100,7 +100,7 @@ class EmpleadoController extends FuncionesController
      * @param  \App\Models\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Empleado $empleado)
+    public function update(EmpleadosRequest $request, Empleado $empleado)
     {
 
         try {
