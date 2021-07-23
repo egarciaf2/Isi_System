@@ -41,7 +41,7 @@ class EmpresaRequest extends FormRequest
             'txtEmail.required' => 'El Correo Electronico es requerido',
             'txtEmail.email' => 'El formato de Correo electronico es incorrecto',
             'txtUrl.required' => 'La Url de la empresa es requerida',
-            'txtUrl.active_url' => 'La Url es invalida'
+            'txtUrl.active_url' => 'La Url es invalida, el formato debe ser http://ejemplo.com'
         ];
     }
 

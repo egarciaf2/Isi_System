@@ -45,7 +45,7 @@
 			<div class="col-12">
 				<div class="form-group">
 					<label for="txtUrl">Url Web</label>
-					<input type="text" class="form-control" id="txtUrl" name="txtUrl" placeholder="Ingresar Url de Web Empresa" value="{{ old('txtUrl', (isset($empresa->url))? $empresa->url : '') }}">
+					<input type="text" class="form-control" id="txtUrl" name="txtUrl" placeholder="Ingresar Url ej. http://ejemplo.com" value="{{ old('txtUrl', (isset($empresa->url))? $empresa->url : '') }}">
 				</div>
 			</div>
 		</div>	
