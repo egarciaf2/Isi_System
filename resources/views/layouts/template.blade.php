@@ -57,90 +57,19 @@
 <body class="hold-transition sidebar-mini sidebar-collapse">
 
 	<!-- Navbar -->
-	<nav class="main-header navbar navbar-expand navbar-success navbar-dark">
-		<!-- Left navbar links -->
-		<ul class="navbar-nav">
-			<li class="nav-item">
-				<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-			</li>
+	@include('layouts._componentes._navbar')
 
-			<li class="nav-item d-none d-sm-inline-block">
-		      <a href="inicio" class="nav-link text-white">Bienvenido {{ Auth::user()->name }}</a>
-		    </li>
-		</ul>
+	<!-- Menu Container -->
+	@include('layouts._componentes._menu')
 
-		<!-- Right navbar links -->
-		<ul class="navbar-nav ml-auto">
-			<div class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					{{ Auth::user()->name }}
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<form method="POST" action="{{ route('logout') }}">
-						@csrf
-						<button type="submit" class="dropdown-item">Salir</button>
-					</form>
-				</div>
-			</div>
-		</ul>
-	</nav>
-
-	<!-- Main Sidebar Container -->
-	<aside class="main-sidebar sidebar-dark-primary elevation-4">
-	  	<!-- Brand Logo -->
-	  	<a href="{{ url('/') }}" class="brand-link">
-	  		<img src="/img/logo4.png"
-	  		alt="AdminLTE Logo"
-	  		class="brand-image img-circle elevation-3"
-	  		style="opacity: .8">
-	  		<span class="brand-text font-weight-light">ISI Solutions</span>
-	  	</a>
-
-	  	<!-- Sidebar -->
-	  	<div class="sidebar">
-	  		<!-- Sidebar Menu -->
-	  		<nav class="mt-2">
-	  			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-	  				<li class="nav-item">
-	  					<a href="{{ route('empresa.index') }}" class="nav-link">
-	  						{{-- <i class="nav-icon fas fa-th"></i> --}}
-	  						<i class="nav-icon fas fa-building"></i>
-	  						<p>
-	  							Empresas
-	  						</p>
-	  					</a>
-	  				</li>
-	  				<li class="nav-item">
-	  					<a href="{{ route('empleado.index') }}" class="nav-link">
-	  						{{-- <i class="nav-icon fas fa-th"></i> --}}
-	  						<i class="nav-icon fas fa-user-tie"></i>
-	  						<p>
-	  							Empleados
-	  						</p>
-	  					</a>
-	  				</li>
-	  			</ul>
-	  		</nav>
-			<!-- /.sidebar-menu -->
-		</div>
-		<!-- /.sidebar -->
-	</aside>
-
-  <div class="content-wrapper pt-4">
+	<!-- Contenido Principal -->
+	<div class="content-wrapper pt-4">
 	    @yield('content')
-  </div>
+	</div>
 
-  <footer class="main-footer">
-  	<div class="float-right d-none d-sm-block">
-  		<b>Version</b> 3.0.5
-  	</div>
-  	<strong>Copyright &copy; 2021 <a href="https://www.linkedin.com/in/egarciaf2" target="_blank">Emilio Garcia</a>.</strong> All rights reserved.
-  </footer>
+	<!-- Footer -->
+	@include('layouts._componentes._footer')
 
-
-
-  	{{-- Muestra gif cargando --}}
-    <div id="divLoading"></div>
 
 	{{-- Alerta Success --}}
 	@if (session('status'))
