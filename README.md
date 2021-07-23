@@ -37,3 +37,5 @@ un servidor, junto con un BDD para que este sea funcional desde internet.
 ● Las imagenes de los logos son guardadas en el Storage del servidor y no en el lado publico, no se implemento un servidor independiente(AWS s3, GCP)
 
 ● Se separo la logica de manejo de imagenes en un controlador independiente
+
+●En el modulo de empresas se añadio una pequeña validacion required en el fronted con JS y la validacion de laravel en el servidor,  en el modulo de Empleados solo se manejo la validacion de laravel, esto con la finalidad de que se puedan apreciar los dos tipos de validacion.
