@@ -27,7 +27,7 @@ class EmpleadosRequest extends FormRequest
             'txtNombre' => 'required',
             'txtApellido' => 'required',
             'slcEmpresa' => 'required',
-            'txtEmail' => 'required|email|unique:empleados,email',
+            'txtEmail' => 'required|email',
             'txtTelefono' => 'required|min:8|max:8'
         ];
     }
@@ -40,7 +40,6 @@ class EmpleadosRequest extends FormRequest
             'slcEmpresa.required' => 'Debe seleccionar una empresa',
             'txtEmail.required' => 'El campo Correo Electronico es requerido',
             'txtEmail.email' => 'El Correo electronico es incorrecto',
-            'txtEmail.unique' => 'El Correo electronico ya existe en el sistema',
             'txtTelefono.required' => 'El campo Telefono es requerido',
             'txtTelefono.min' => 'El campo Telefono debe tener 8 digitos',
             'txtTelefono.max' => 'El campo Telefono debe tener 8 digitos',
