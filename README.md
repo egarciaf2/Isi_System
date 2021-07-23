@@ -1,62 +1,39 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Funcionalidades Completadas
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+● Autenticación básica de Laravel: posibilidad de iniciar sesión como administrador (El
+administrador es un usuario normal, no es necesario manejar permisos.).
 
-## About Laravel
+● Utilice las semillas/seeds de la base de datos para crear el primer usuario con el correo
+	electrónico admin@admin.com y la contraseña "contraseña".
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+● Funcionalidad CRUD (Crear / Leer / Actualizar / Eliminar) para dos elementos del menú:
+	Empresas y Empleados.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+● La tabla de bases de datos de empresas consta de estos campos: Nombre (obligatorio),
+	correo electrónico (obligatorio), logotipo (mínimo 100 × 100), sitio web (URL)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+● La tabla de la base de datos de empleados consta de estos campos: nombre
+	(obligatorio), apellido (obligatorio), empresa (clave externa para empresas), correo
+	electrónico, teléfono.
 
-## Learning Laravel
+● Utilice migraciones de base de datos para crear los esquemas anteriores
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+● Almacene los logotipos de las empresas en almacenamiento / aplicación / carpeta
+	pública y hágalos accesibles desde el público.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+● Use controladores de recursos básicos de Laravel con métodos predeterminados:
+	indexar, crear, almacenar, etc.
 
-## Laravel Sponsors
+● Usa la función de validación de Laravel, usando clases de solicitud / request classes
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+● Use la paginación de Laravel para mostrar la lista de Empresas / Empleados, 10
+	entradas por página
 
-### Premium Partners
+## Extras
+● Carga del proyecto a un servidor web: Utilizando NGINX o Apache subir el proyecto a
+un servidor, junto con un BDD para que este sea funcional desde internet.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+## Notas
+● Las imagenes de los logos son guardadas en el Storage del servidor y no en el lado publico, no se implemento un servidor independiente(AWS s3, GCP)
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+● Se separo la logica de manejo de imagenes en un controlador independiente
