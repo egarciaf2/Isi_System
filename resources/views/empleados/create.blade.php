@@ -10,7 +10,7 @@
             <div class="card shadow card-success card-outline">
               <div class="card-header">
               	<div class="d-flex justify-content-between">
-              		<h3 class="card-title mt-2">Nueva Empresa</h3>
+              		<h3 class="card-title mt-2">Nuevo Empleado</h3>
               	</div>
                 
               </div>
@@ -39,13 +39,13 @@
               					<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
               						<div class="form-group">
               							<label for="txtNombre">Nombre</label>
-              							<input type="text" class="form-control" id="txtNombre" name="txtNombre" value="{{ old('txtNombre') }}">
+              							<input type="text" class="form-control" id="txtNombre" name="txtNombre" value="{{ old('txtNombre') }}" placeholder="Nombre de empleado">
               						</div>
               					</div>
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                     <div class="form-group">
                                         <label for="txtApellido">Apellido</label>
-                                        <input type="text" class="form-control" id="txtApellido" name="txtApellido" value="{{ old('txtApellido') }}">
+                                        <input type="text" class="form-control" id="txtApellido" name="txtApellido" value="{{ old('txtApellido') }}" placeholder="Apellido de empleado">
                                     </div>
                                 </div>
               					<div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -68,13 +68,13 @@
                                 <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                     <div class="form-group">
                                         <label for="txtEmail">Correo</label>
-                                        <input type="email" class="form-control" id="txtEmail" name="txtEmail" value="{{ old('txtEmail') }}">
+                                        <input type="email" class="form-control" id="txtEmail" name="txtEmail" value="{{ old('txtEmail') }}" placeholder="Ingrese correo electronico">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                     <div class="form-group">
                                         <label for="txtTelefono">Teléfono</label>
-                                        <input type="number" class="form-control" id="txtTelefono" name="txtTelefono" value="{{ old('txtTelefono') }}" min="8">
+                                        <input type="number" class="form-control" id="txtTelefono" name="txtTelefono" value="{{ old('txtTelefono') }}" min="8" placeholder="Ingrese telefono">
                                     </div>
                                 </div>
               				</div>	
@@ -100,5 +100,5 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/empresas.js') }}"></script>
+    <script src="{{ asset('js/empleados.js') }}"></script>
 @endpush
