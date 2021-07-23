@@ -14,6 +14,7 @@
 @endif
 
 <div class="row">
+	<input type="hidden" id="idEmp" value="{{ (isset($empresa->id))? $empresa->id : '' }}">
 	{{-- Logo --}}
 	<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center mb-3">
 		<div class="form-group mb-3">
@@ -53,5 +54,5 @@
 
 <div class="d-flex justify-content-between mt-4">
 	<a href="{{ route('empresa.index') }}" class="btn btn-danger">Cancelar</a>
-<button type="submit" class="btn btn-info">{{ $btnText }}</button>
+	<button type="button" class="btn btn-info" onclick="validarEmpresa()">{{ $btnText }}</button>
 </div>

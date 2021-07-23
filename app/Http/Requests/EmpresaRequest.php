@@ -26,7 +26,7 @@ class EmpresaRequest extends FormRequest
         return [
             'imgLogo' => 'image|max:5120', // peso maximo de 5 mb
             'txtNombre' => 'required',
-            'txtEmail' => 'required|email',
+            'txtEmail' => 'required|email|unique:empresas,email',
             'txtUrl' => 'required'
         ];
     }
@@ -39,7 +39,8 @@ class EmpresaRequest extends FormRequest
             //'imgLogo.max:5120' => 'La imagen es demaciado pesada, debe tener un peso maximo de 5MB', // peso maximo de 5 mb
             'txtNombre.required' => 'El campo Nombre es requerido',
             'txtEmail.required' => 'El Correo Electronico es requerido',
-            'txtEmail.email' => 'El Correo electronico es incorrecto',
+            'txtEmail.email' => 'El formato de Correo electronico es incorrecto',
+            'txtEmail.unique' => 'El Correo electronico ya existe en el sistema',
             'txtUrl.required' => 'La Url de la empresa es requerida'
         ];
     }

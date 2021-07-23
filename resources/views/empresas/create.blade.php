@@ -15,7 +15,7 @@
 
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('empresa.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('empresa.store') }}" enctype="multipart/form-data" id="frmEmpresa">
                             @csrf
                             {{-- Mismo formulario reutilizado para editar y crear --}}
                             @include('empresas._form', ['btnText' => 'Registrar Empresa'])   

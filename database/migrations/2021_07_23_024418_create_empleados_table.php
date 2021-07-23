@@ -19,7 +19,7 @@ class CreateEmpleadosTable extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->string('email')->unique();
-            $table->bigInteger('telefono')->unique();
+            $table->bigInteger('telefono');
             $table->boolean('estado')->default(1);
             $table->timestamps();
         });
