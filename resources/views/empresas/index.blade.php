@@ -30,34 +30,36 @@
 						  				</tr>
 						  			</thead>
 						  			<tbody>
-						  				@foreach ($empresas as $empresa)
-						  					<tr>
-							  					<th>
-							  						<img class="img-thumbnail align-middle" width="60" height="60" src="{{ ($empresa->logoTipo)?  '/showImg?ruta='.$empresa->logoTipo : asset(Config('constantes.img_default')) }}" alt="">
-							  					</th>
-							  					<td class="align-middle">{{ ($empresa->nombre)? $empresa->nombre : '' }}</td>
-							  					<td class="align-middle">{{ ($empresa->email)? $empresa->email : '' }}</td>
-							  					<td class="align-middle">{{ ($empresa->url)? $empresa->url : '' }}</td>
-							  					<td class="align-middle text-center">
-							  						<div class='btn-group'>
-							  							<a href="{{ route('empresa.edit', $empresa) }}" class="btn btn-warning btn-sm text-white">
-								  							<i class="fas fa-pencil-alt"></i>
-								  						</a>
+						  				@if (isset($empresas) and count($empresas) > 0)						  				
+							  				@foreach ($empresas as $empresa)
+							  					<tr>
+								  					<td>
+								  						<img class="img-thumbnail align-middle" width="60" height="60" src="{{ ($empresa->logoTipo)?  '/showImg?ruta='.$empresa->logoTipo : asset(Config('constantes.img_default')) }}" alt="">
+								  					</td>
+								  					<td class="align-middle">{{ ($empresa->nombre)? $empresa->nombre : '' }}</td>
+								  					<td class="align-middle">{{ ($empresa->email)? $empresa->email : '' }}</td>
+								  					<td class="align-middle">{{ ($empresa->url)? $empresa->url : '' }}</td>
+								  					<td class="align-middle text-center">
+								  						<div class='btn-group'>
+								  							<a href="{{ route('empresa.edit', $empresa) }}" class="btn btn-warning btn-sm text-white">
+									  							<i class="fas fa-pencil-alt"></i>
+									  						</a>
 
-								  						    <form method="POST" action="{{ route('empresa.destroy', $empresa) }}" id="frmDeleteEmpresa{{$empresa->id}}">
-															    	@csrf
-															    	@method('DELETE')
-															    	<button type="button" class="btn btn-danger btn-sm" onclick="deleteEmpresa('frmDeleteEmpresa{{$empresa->id}}')">
-															    		<i class="fas fa-trash-alt"></i>
-															    	</button>
+									  						    <form method="POST" action="{{ route('empresa.destroy', $empresa) }}" id="frmDeleteEmpresa{{$empresa->id}}">
+																    	@csrf
+																    	@method('DELETE')
+																    	<button type="button" class="btn btn-danger btn-sm" onclick="deleteEmpresa('frmDeleteEmpresa{{$empresa->id}}')">
+																    		<i class="fas fa-trash-alt"></i>
+																    	</button>
 
-															    </form>
-							  									
-							  								</a>
-							  						</div>
-							  					</td>
-							  				</tr>
-						  				@endforeach
+																    </form>
+								  									
+								  								</a>
+								  						</div>
+								  					</td>
+								  				</tr>
+							  				@endforeach
+							  			@endif	
 						  				
 						  			</tbody>
 						  		</table>

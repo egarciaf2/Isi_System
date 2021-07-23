@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\EmpresaController;
+use \App\Http\Controllers\EmpleadoController;
 use \App\Http\Controllers\FuncionesController;
 
 /*
@@ -17,12 +18,12 @@ use \App\Http\Controllers\FuncionesController;
 
 Route::get('/showImg', [FuncionesController::class, 'showImg']);
 
-Route::any('/', [EmpresaController::class, 'index'])
+Route::get('/', [EmpresaController::class, 'index'])
     ->middleware(['auth'])
     ->name('home');
 
-Route::resource('/empresa', EmpresaController::class)->names('empresa')->middleware(['auth']);
-//Route::resource('/empresa', EmpresaController::class)->names('projects')->parameters(['portafolio' => 'project']);
+Route::resource('/empresas', EmpresaController::class)->names('empresa')->middleware(['auth']);
+Route::resource('/empleados', EmpleadoController::class)->names('empleado')->middleware(['auth']);
 
 
 require __DIR__.'/auth.php';

@@ -111,7 +111,7 @@
 	  					</a>
 	  				</li>
 	  				<li class="nav-item">
-	  					<a href="{{ url('/') }}" class="nav-link">
+	  					<a href="{{ route('empleado.index') }}" class="nav-link">
 	  						{{-- <i class="nav-icon fas fa-th"></i> --}}
 	  						<i class="nav-icon fas fa-user-tie"></i>
 	  						<p>

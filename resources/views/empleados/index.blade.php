@@ -12,45 +12,56 @@
               	<div class="d-flex justify-content-between">
               		<h3 class="card-title mt-2">Empleados</h3>
 
-                	<button class="btn btn-success">Nuevo Empleado</button>
+                	<a href="{{ route('empresa.create') }}" class="btn btn-success">Nuevo Empleado</a>
               	</div>
-                
+
               </div>
               <div class="card-body">
-				  	<div class=""> 
-				  		{{-- table table-bordered table-striped dataTable dtr-inline collapsed --}}
-				  		<table id="tblEmpleados" class="table table-striped table-hover dtr-inline dt-responsive" width="100%">
-				  			<caption>Lista de Empleados</caption>
-				  			<thead class="thead-dark|thead-light">
-				  				<tr>
-				  					<th>Nombre</th>
-				  					<th>Empresa</th>
-				  					<th>Correo</th>
-				  					<th>Telefono</th>
-				  					<th class="text-center">Acciones</th>
-				  				</tr>
-				  			</thead>
-				  			<tbody>
-				  				<tr>
-				  					<td class="align-middle">Emilio Garcia</td>
-				  					<td class="align-middle">isisolutions</td>
-				  					<td class="align-middle">isi@isisolutions.com</td>
-				  					<td class="align-middle">23542354</td>
-				  					<td class="align-middle text-center">
-				  						<div class='btn-group'>
-				  							<button class="btn btn-warning btn-sm btnEditarCliente text-white" title="Editar Empresa">
-				  								<i class="fas fa-pencil-alt"></i>
-				  							</button>
-				  							<button class="btn btn-danger btn-sm btnEliminarCliente">
-				  								<i class="fas fa-trash-alt"></i>
-				  							</button>
-				  						</div>
-				  					</td>
-				  				</tr>
+						  	<div class="">
+						  		<table id="tblEmpresas" class="table table-striped table-hover dtr-inline dt-responsive" width="100%">
+						  			<caption>Lista de Empleados</caption>
+						  			<thead class="thead-dark|thead-light">
+						  				<tr>
+						  					<th>Nombre</th>
+						  					<th>Empresa</th>
+						  					<th>Correo</th>
+						  					<th>telefono</th>
+						  					<th class="text-center">Acciones</th>
+						  				</tr>
+						  			</thead>
+						  			<tbody>
+						  				@if (isset($empleados) and count($empleados) > 0)
+								  				@foreach ($empleados as $empleado)
+								  					<tr>
+									  					<td class="align-middle">{{ ($empleado->nombre)? $empleado->nombre.' '.$empleado->apellido : '' }}</td>
+									  					<td class="align-middle">{{ ($empleado->empresa->nombre)? $empleado->empresa->nombre : '' }}</td>
+									  					<td class="align-middle">{{ ($empleado->email)? $empleado->email : '' }}</td>
+									  					<td class="align-middle">{{ ($empleado->telefono)? $empleado->telefono : '' }}</td>
+									  					<td class="align-middle text-center">
+									  						<div class='btn-group'>
+									  							<a href="{{ route('empleado.edit', $empleado) }}" class="btn btn-warning btn-sm text-white">
+										  							<i class="fas fa-pencil-alt"></i>
+										  						</a>
 
-				  			</tbody>
-				  		</table>
-				  	</div>
+										  						    <form method="POST" action="{{ route('empleado.destroy', $empleado) }}" id="frmDeleteempleado{{$empleado->id}}">
+																	    	@csrf
+																	    	@method('DELETE')
+																	    	<button type="button" class="btn btn-danger btn-sm" onclick="deleteempleado('frmDeleteempleado{{$empleado->id}}')">
+																	    		<i class="fas fa-trash-alt"></i>
+																	    	</button>
+
+																	    </form>
+									  									
+									  								</a>
+									  						</div>
+									  					</td>
+									  				</tr>
+								  				@endforeach
+							  			@endif	
+
+						  			</tbody>
+						  		</table>
+						  	</div>
               </div>
               <!-- /.card-body -->
             </div>
@@ -60,9 +71,12 @@
       </div>
     </section>
 
+    {{-- form utilizado para eliminar una empresa --}}
+
+
 
 @endsection
 
 @push('scripts')
-    <script src="js/empleados.js"></script>
+    <script src="{{ asset('js/empresas.js') }}"></script>
 @endpush
