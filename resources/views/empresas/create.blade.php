@@ -5,7 +5,7 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row justify-content-center">
-          <div class="col-8">
+          <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8">
             <!-- Default box -->
             <div class="card shadow card-success card-outline">
               <div class="card-header">
