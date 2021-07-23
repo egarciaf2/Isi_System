@@ -12,7 +12,7 @@
               	<div class="d-flex justify-content-between">
               		<h3 class="card-title mt-2">Empleados</h3>
 
-                	<a href="{{ route('empresa.create') }}" class="btn btn-success">Nuevo Empleado</a>
+                	<a href="{{ route('empleado.create') }}" class="btn btn-success">Nuevo Empleado</a>
               	</div>
 
               </div>

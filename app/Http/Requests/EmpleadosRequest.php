@@ -13,7 +13,7 @@ class EmpleadosRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,25 @@ class EmpleadosRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'txtNombre' => 'required',
+            'txtApellido' => 'required',
+            'slcEmpresa' => 'required',
+            'txtEmail' => 'required|email',
+            'txtTelefono' => 'required|min:8|max:8'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'txtNombre.required' => 'El campo Nombre es requerido',
+            'txtApellido.required' => 'El campo Apellido es requerido',
+            'slcEmpresa.required' => 'Debe seleccionar una empresa',
+            'txtEmail.required' => 'El campo Correo Electronico es requerido',
+            'txtEmail.email' => 'El Correo electronico es incorrecto',
+            'txtTelefono.required' => 'El campo Telefono es requerido',
+            'txtTelefono.min' => 'El campo Telefono debe tener 8 digitos',
+            'txtTelefono.max' => 'El campo Telefono debe tener 8 digitos',
         ];
     }
 }

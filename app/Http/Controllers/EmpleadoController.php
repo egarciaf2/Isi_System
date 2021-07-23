@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmpleadosRequest;
 use App\Models\Empleado;
 use App\Models\Empresa;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-class EmpleadoController extends Controller
+class EmpleadoController extends FuncionesController
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +20,6 @@ class EmpleadoController extends Controller
         $empleados = Empleado::where('estado', '=', 1)
             ->with('Empresa')
             ->get();
-//        dd(json_decode($empleados));
-
         return view("empleados.index", get_defined_vars());
     }
 
@@ -30,7 +30,10 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        //
+        $empresas = Empresa::where('estado', '=', 1)->get();
+
+        return view("empleados.create", get_defined_vars());
+
     }
 
     /**
@@ -39,9 +42,31 @@ class EmpleadoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmpleadosRequest $request)
     {
-        //
+
+        try {
+
+            $empleado = new Empleado();
+            $empleado->idEmpresa = $request->slcEmpresa;
+            $empleado->nombre = $request->txtNombre;
+            $empleado->apellido = $request->txtApellido;
+            $empleado->email = $request->txtEmail;
+            $empleado->telefono = $request->txtTelefono;
+            $empleado->save();
+            return $this->messageRedirect('empleado.index', true, 'Empleado registrado Exitosamente');
+
+
+        }catch (\Exception $ex) {
+            return $this->messageRedirect('empleado.create', false, 'Se presentó un error al tratar de guardar los datos');
+
+        } catch (\Throwable $ex) {
+            return $this->messageRedirect('empleado.create', false, 'Se presentó un error al tratar de guardar los datos');
+
+        }catch (QueryException $ex) {
+            return $this->messageRedirect('empleado.create', false, 'Se presentó un error al tratar de guardar los datos');
+
+        }
     }
 
     /**

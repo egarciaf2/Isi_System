@@ -69,10 +69,11 @@ class EmpresaController extends FuncionesController
             $this->deleteFile($img['message']);
             return $this->messageRedirect('empresa.create', false, 'Se presentó un error al tratar de guardar los datos');
 
-        }catch (QueryException $ex)
-        {
+        }catch (QueryException $ex){
+
             $this->deleteFile($img['message']);
             return $this->messageRedirect('empresa.create', false, 'Se presentó un error al tratar de guardar los datos');
+
         }
     }
 
@@ -178,7 +179,7 @@ class EmpresaController extends FuncionesController
         $updateEmpresa = Empresa::find($empresa->id);
         $updateEmpresa->estado = 0;
         $updateEmpresa->save();
-        
+
         return $this->messageRedirect('empresa.index', true, 'La empresa fue eliminada exitosamente');
 
     }catch (\Exception $ex) {
