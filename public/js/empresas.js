@@ -80,8 +80,8 @@ function validarEmpresa(){
             text: "¿Confirma que desea Actualizar la empresa?",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#d75',
+            confirmButtonColor: '#00b4d8',
+            cancelButtonColor: '#ff6b6b',
             confirmButtonText: 'Si, Confirmar!'
         }).then((result) => {
 

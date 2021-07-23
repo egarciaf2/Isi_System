@@ -18,7 +18,7 @@ class CreateEmpleadosTable extends Migration
             $table->bigInteger('idEmpresa');
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->bigInteger('telefono');
             $table->boolean('estado')->default(1);
             $table->timestamps();
