@@ -88,7 +88,9 @@ class EmpleadoController extends FuncionesController
      */
     public function edit(Empleado $empleado)
     {
-        //
+        $empresas = Empresa::where('estado', '=', 1)->get();
+
+        return view('empleados.edit', get_defined_vars());
     }
 
     /**
@@ -100,7 +102,28 @@ class EmpleadoController extends FuncionesController
      */
     public function update(Request $request, Empleado $empleado)
     {
-        //
+
+        try {
+
+            $empleado = Empleado::find($empleado->id);
+            $empleado->idEmpresa = $request->slcEmpresa;
+            $empleado->nombre = $request->txtNombre;
+            $empleado->apellido = $request->txtApellido;
+            $empleado->email = $request->txtEmail;
+            $empleado->telefono = $request->txtTelefono;
+            $empleado->save();
+            return $this->messageRedirect('empleado.index', true, 'Empleado Actualizado Exitosamente');
+
+
+        } catch (\Exception $ex) {
+            return $this->messageRedirect('empleado.create', false, 'Se presentó un error al tratar de Actualizar los datos');
+
+        } catch (\Throwable $ex) {
+            return $this->messageRedirect('empleado.create', false, 'Se presentó un error al tratar de Actualizar los datos');
+
+        } catch (QueryException $ex) {
+            return $this->messageRedirect('empleado.create', false, 'Se presentó un error al tratar de Actualizar los datos');
+        }
     }
 
     /**
