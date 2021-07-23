@@ -28,6 +28,75 @@ $(document).ready( function () {
     });
 } );
 
+
+function validarEmpresa(){
+        let idEmp = $('#idEmp');
+        let logoTipo = $('#imgLogo');
+        let nombre = $('#txtNombre');
+        let email = $('#txtEmail');
+        let url = $('#txtUrl');
+
+    if (idEmp.val() == '' && logoTipo.val() == '' ) {
+        logoTipo.addClass('is-invalid');
+        showAlert('warning', 'Requerido', 'El logo de la empresa es requerido');
+        return false;
+    }else{
+        logoTipo.removeClass('is-invalid');
+    }
+
+    if (nombre.val() == '' ) {
+        nombre.addClass('is-invalid');
+        showAlert('warning', 'Requerido', 'El nombre de la empresa es requerido');
+        return false;
+
+    }else{
+        nombre.removeClass('is-invalid');
+    }
+
+    if (email.val() == '' ) {
+        email.addClass('is-invalid');
+        showAlert('warning', 'Requerido', 'El Correo Electronico de la empresa es requerido');
+        return false;
+
+    }else{
+        email.removeClass('is-invalid');
+    }
+
+    if (url.val() == '' ) {
+        url.addClass('is-invalid');
+        showAlert('warning', 'Requerido', 'La direccion URL de la empresa es requerida');
+        return false;
+
+    }else{
+        url.removeClass('is-invalid');
+    }
+
+    if (idEmp.val() == '') {
+        let formulario = document.getElementById('frmEmpresa');
+        formulario.submit();
+    }else{
+        Swal.fire({
+            title: 'Actualizar',
+            text: "¿Confirma que desea Actualizar la empresa?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#d75',
+            confirmButtonText: 'Si, Confirmar!'
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+                let formulario = document.getElementById('frmEmpresa');
+                formulario.submit();
+            }
+
+        })
+    }
+    
+}
+
+
+
 // eliminar Empresa
 function deleteEmpresa(idForm){
     Swal.fire({
@@ -45,10 +114,8 @@ function deleteEmpresa(idForm){
             formulario.submit();
         }
 
-        })
+    })
 }
-
-
 
 // Mostrar previzualizacion de logo
 $(".uploadLogo").change(function(){
