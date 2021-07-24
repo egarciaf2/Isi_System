@@ -41,7 +41,7 @@
 								  					<td class="align-middle">{{ ($empresa->url)? $empresa->url : '' }}</td>
 								  					<td class="align-middle text-center">
 								  						<div class='btn-group'>
-								  							<a href="{{ route('empresa.edit', $empresa) }}" class="btn btn-info btn-sm text-white" title="Detalle">
+								  							<a href="{{ route('empresa.show', $empresa) }}" class="btn btn-info btn-sm text-white" title="Detalle">
 									  							<i class="fas fa-eye"></i>
 									  						</a>
 								  							<a href="{{ route('empresa.edit', $empresa) }}" class="btn btn-warning btn-sm text-white" title="Editar">

@@ -13,4 +13,9 @@ class Empresa extends Model
     protected $primaryKey = 'id';
     protected $fillable = array('nombre', 'email', 'logoTipo', 'url', 'estado', 'created_at', 'updated_at');
     public $incrementing = true;
+
+    public function Empleados()
+    {
+        return $this->hasMany(Empleado::class, 'idEmpresa', 'id');
+    }
 }

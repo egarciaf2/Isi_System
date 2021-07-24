@@ -87,7 +87,13 @@ class EmpresaController extends FuncionesController
      */
     public function show(Empresa $empresa)
     {
-        //
+        $empresas = Empresa::where('estado', '=', 1)
+            ->with('Empleados')
+            ->get();
+
+//        dd(json_decode($empresas));
+
+        return view("empresas.show", get_defined_vars());
     }
 
     /**
