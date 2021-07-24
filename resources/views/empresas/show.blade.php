@@ -22,10 +22,10 @@
                             <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center mb-3">
                                 <div class="form-group mb-3">
                                     <label for="imgLogo">Logo Empresa</label>
+                                </div>
                                    
                                 <img src="{{ (isset($empresa->logoTipo))?  '/showImg?ruta='.$empresa->logoTipo : asset(Config('constantes.img_default')) }}" id="vwNewImg" class="img-fluid" alt="" style="max-height: 400px;">
                                 </div>
-                            </div>
 
                             {{-- Info --}}
                             <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
