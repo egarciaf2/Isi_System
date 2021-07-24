@@ -39,14 +39,14 @@
 									  					<td class="align-middle">{{ ($empleado->telefono)? $empleado->telefono : '' }}</td>
 									  					<td class="align-middle text-center">
 									  						<div class='btn-group'>
-									  							<a href="{{ route('empleado.edit', $empleado) }}" class="btn btn-warning btn-sm text-white">
+									  							<a href="{{ route('empleado.edit', $empleado) }}" class="btn btn-warning btn-sm text-white" title="Editar">
 										  							<i class="fas fa-pencil-alt"></i>
 										  						</a>
 
 										  						    <form method="POST" action="{{ route('empleado.destroy', $empleado) }}" id="frmDeleteempleado{{$empleado->id}}">
 																	    	@csrf
 																	    	@method('DELETE')
-																	    	<button type="button" class="btn btn-danger btn-sm" onclick="deleteEmpleado('frmDeleteempleado{{$empleado->id}}')">
+																	    	<button type="button" class="btn btn-danger btn-sm" onclick="deleteEmpleado('frmDeleteempleado{{$empleado->id}}')" title="Eliminar">
 																	    		<i class="fas fa-trash-alt"></i>
 																	    	</button>
 

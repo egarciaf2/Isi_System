@@ -41,14 +41,17 @@
 								  					<td class="align-middle">{{ ($empresa->url)? $empresa->url : '' }}</td>
 								  					<td class="align-middle text-center">
 								  						<div class='btn-group'>
-								  							<a href="{{ route('empresa.edit', $empresa) }}" class="btn btn-warning btn-sm text-white">
+								  							<a href="{{ route('empresa.edit', $empresa) }}" class="btn btn-info btn-sm text-white" title="Detalle">
+									  							<i class="fas fa-eye"></i>
+									  						</a>
+								  							<a href="{{ route('empresa.edit', $empresa) }}" class="btn btn-warning btn-sm text-white" title="Editar">
 									  							<i class="fas fa-pencil-alt"></i>
 									  						</a>
 
 									  						    <form method="POST" action="{{ route('empresa.destroy', $empresa) }}" id="frmDeleteEmpresa{{$empresa->id}}">
 																    	@csrf
 																    	@method('DELETE')
-																    	<button type="button" class="btn btn-danger btn-sm" onclick="deleteEmpresa('frmDeleteEmpresa{{$empresa->id}}')">
+																    	<button type="button" class="btn btn-danger btn-sm" title="Eliminar" onclick="deleteEmpresa('frmDeleteEmpresa{{$empresa->id}}')">
 																    		<i class="fas fa-trash-alt"></i>
 																    	</button>
 
