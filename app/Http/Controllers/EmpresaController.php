@@ -91,7 +91,6 @@ class EmpresaController extends FuncionesController
             ->with('Empleados')
             ->get();
 
-//        dd(json_decode($empresas));
 
         return view("empresas.show", get_defined_vars());
     }

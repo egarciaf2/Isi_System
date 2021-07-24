@@ -22,12 +22,9 @@
                             <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center mb-3">
                                 <div class="form-group mb-3">
                                     <label for="imgLogo">Logo Empresa</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input uploadLogo" id="imgLogo" name="imgLogo">
-                                        <label class="custom-file-label" for="imgLogo" data-browse="Buscar">Buscar Logo</label>
-                                    </div>
-                                </div>
+                                   
                                 <img src="{{ (isset($empresa->logoTipo))?  '/showImg?ruta='.$empresa->logoTipo : asset(Config('constantes.img_default')) }}" id="vwNewImg" class="img-fluid" alt="" style="max-height: 400px;">
+                                </div>
                             </div>
 
                             {{-- Info --}}
@@ -36,19 +33,19 @@
                                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                         <div class="form-group">
                                             <label for="txtNombre">Nombre de Empresa</label>
-                                            <input type="text" class="form-control" id="txtNombre" name="txtNombre" placeholder="Ingresar Nombre " value="{{ (isset($empresa->nombre))? $empresa->nombre : '' }}">
+                                            <input readonly type="text" class="form-control" id="txtNombre" name="txtNombre" placeholder="Ingresar Nombre " value="{{ (isset($empresa->nombre))? $empresa->nombre : '' }}">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                         <div class="form-group">
                                             <label for="txtEmail">Correo Electronico</label>
-                                            <input type="email" class="form-control" id="txtEmail" name="txtEmail" placeholder="Ingresar Correo Electronico" value="{{ (isset($empresa->email))? $empresa->email : '' }}">
+                                            <input readonly type="email" class="form-control" id="txtEmail" name="txtEmail" placeholder="Ingresar Correo Electronico" value="{{ (isset($empresa->email))? $empresa->email : '' }}">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="txtUrl">Url Web</label>
-                                            <input type="text" class="form-control" id="txtUrl" name="txtUrl" placeholder="Ingresar Url ej. http://ejemplo.com" value="{{ (isset($empresa->url))? $empresa->url : '' }}">
+                                            <input readonly type="text" class="form-control" id="txtUrl" name="txtUrl" placeholder="Ingresar Url ej. http://ejemplo.com" value="{{ (isset($empresa->url))? $empresa->url : '' }}">
                                         </div>
                                     </div>
                                 </div>  
