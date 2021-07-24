@@ -63,8 +63,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if (isset($empresa->empleados) and count($empresa->empleados) > 0)
-                                                    @foreach ($empresa->empleados as $empleado)
+                                            @if (isset($empleados) and count($empleados) > 0)
+                                                    @foreach ($empleados as $empleado)
                                                         <tr>
                                                             <td class="align-middle">{{ ($empleado->nombre)? $empleado->nombre.' '.$empleado->apellido : '' }}</td>
                                                             <td class="align-middle">{{ ($empleado->email)? $empleado->email : '' }}</td>

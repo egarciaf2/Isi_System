@@ -16,6 +16,6 @@ class Empresa extends Model
 
     public function Empleados()
     {
-        return $this->hasMany(Empleado::class, 'idEmpresa', 'id');
+         return $this->hasMany(Empleado::class, 'idEmpresa', 'id');
     }
 }
